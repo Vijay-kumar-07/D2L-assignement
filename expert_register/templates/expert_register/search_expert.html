@@ -1,0 +1,15 @@
+{% extends "expert_register/base.html" %}
+
+{% block content %}
+    <center>
+        {% if searched %}
+            <h1>You Searched For {{searched}}</h1>
+            <br/>
+            {% for expert in experts %}
+                 <a href="{% url 'collections' expert.hospital %}">{{ expert }}</a><br/>
+            {% endfor %}
+        {% else %}
+            <h1>You forget to Enter the Name {{searched}}</h1>
+        {% endif %}
+    </center>
+{% endblock %}

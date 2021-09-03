@@ -1,0 +1,54 @@
+{% extends "expert_register/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="" method="post" autocomplete="off">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-4">
+            {{form.expertname|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.qualification|as_crispy_field}}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4">
+            {{form.dob|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.doj|as_crispy_field}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            {{form.hospital|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.country|as_crispy_field}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            {{form.state|as_crispy_field}}
+        </div>
+        <div class="col-md-8">
+            {{form.city|as_crispy_field}}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i>
+                Submit</button>
+        </div>
+        <div class="col-md-4">
+            <a href="{% url 'collections' %}" class="btn btn-secondary btn-block btn-lg">
+                <i class="fas fa-stream"></i> Back to DB
+            </a>
+        </div>
+    </div>
+
+</form>
+{% endblock content %}

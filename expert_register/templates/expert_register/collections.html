@@ -1,0 +1,80 @@
+{% extends "expert_register/base.html" %}
+
+{% block content %}
+<table class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+
+
+    <form class="d-flex" method=POST action="{% url 'search-expert' %}">
+        {% csrf_token %}
+        <input class="form-control me-2" type="search" placeholder="Search Experts" aria-label="Search" name="searched">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+
+    </form>
+        <tr>
+            <td>Expert Name</td>
+            <td>Qualification</td>
+            <td>DOB</td>
+            <td>DOJ</td>
+            <td>Hospital</td>
+            <td>Country</td>
+            <td>State</td>
+            <td>City</td>
+            <td>
+                <a href="{% url 'insert' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add New
+                </a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in collections %}
+            <tr>
+                <td>{{data.expertname}}</td>
+                <td>{{data.qualification}}</td>
+                <td>{{data.dob}}</td>
+                <td>{{data.doj}}</td>
+                <td>{{data.hospital}}</td>
+                <td>{{data.country}}</td>
+                <td>{{data.state}}</td>
+                <td>{{data.city}}</td>
+                <td>
+                    <a href="{% url 'update' data.id %}" class="btn text-secondary px-0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'delete' data.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<div class="container">
+  <ul class="pagination">
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+  </ul>
+</div>
+
+</body>
+</table>
+
+
+
+{% endblock content %}

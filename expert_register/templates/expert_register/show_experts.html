@@ -1,0 +1,34 @@
+{% extends 'expert_register/base.html' %}
+
+{% block content %}
+	
+
+<div class="card">
+  <div class="card-header">
+    Expert
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ expert }}</h5>
+    <p class="card-text">
+    	<ul>
+
+	<li>{{ expert.qualification }}</li>
+	<li>{{ expert.dob }}</li>
+	<li>{{ expert.doj }}</li>
+	<li>{{ expert.hospital }}</li>
+    <li>{{ expert.state }}</li>
+    <li>{{ expert.city }}</li>
+	<li><a href="{{ expert.country }}">{{ expert.country }}</a></li>
+
+	</ul>
+
+
+
+    </p>
+  </div>
+</div>
+	
+
+	
+	</center>
+{% endblock %}
